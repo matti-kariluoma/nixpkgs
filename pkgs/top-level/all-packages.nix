@@ -1035,6 +1035,8 @@ with pkgs;
     boost = pkgs.boost.override { python = python3; };
   };
 
+  candle = libsForQt5.callPackage ../applications/misc/candle { };
+
   capstone = callPackage ../development/libraries/capstone { };
   unicorn-emu = callPackage ../development/libraries/unicorn-emu { };
 
