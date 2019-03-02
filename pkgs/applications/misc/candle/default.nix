@@ -11,15 +11,14 @@ stdenv.mkDerivation rec {
     sha256 = "1gpx08gdz8awbsj6lsczwgffp19z3q0r2fvm72a73qd9az29pmm0";
   };
 
-  buildPhase = ''
-    cd src
-    qmake
-    buildPhase
-  '';
+  nativeBuildInputs = [ qmake ];
+  
+  sourceRoot = "source/src";
 
   installPhase = ''
-    mkdir -p $out/bin
-    cp Candle $out/bin/
+    runHook preInstall
+    install -Dm755 Candle $out/bin/candle
+    runHook postInstall
   '';
 
   buildInputs = [ qtbase qtserialport ];
@@ -28,7 +27,7 @@ stdenv.mkDerivation rec {
     description = "GRBL controller application with G-Code visualizer written in Qt";
     homepage = https://github.com/Denvi/Candle;
     license = licenses.gpl3;
-    maintainers = [ maintainers.matti-kariluoma ];
+    maintainers = with maintainers; [ matti-kariluoma ];
     platforms = platforms.all;
   };
 }
