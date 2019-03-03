@@ -16543,6 +16543,8 @@ with pkgs;
   fomp = callPackage ../applications/audio/fomp { };
 
   freecad = callPackage ../applications/graphics/freecad { mpi = openmpi; };
+  
+  freecad-git = callPackage ../applications/graphics/freecad/git.nix { mpi = openmpi; };
 
   freemind = callPackage ../applications/misc/freemind { };
 
